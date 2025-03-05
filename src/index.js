@@ -20,8 +20,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://chat-react-rho-flax.vercel.app/",
-    credentials: true,
+    // origin: "https://chat-react-rho-flax.vercel.app/",
+    // credentials: true,
   })
 );
 
