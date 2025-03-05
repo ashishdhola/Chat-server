@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     // origin: ["http://localhost:5173"],
-    origin: ["https://chat-server-h4qa.onrender.com"],
+    origin: ["https://chat-react-rho-flax.vercel.app/"],
   },
 });
 
