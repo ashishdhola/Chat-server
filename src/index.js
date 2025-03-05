@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import express from "express";
+import express, { urlencoded } from "express";
 
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -14,6 +14,7 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
+app.use(express.urlencoded());
 
 app.use(express.json());
 app.use(cookieParser());
