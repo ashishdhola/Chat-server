@@ -18,12 +18,27 @@ app.use(express.urlencoded());
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "https://chat-react-rho-flax.vercel.app/",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://chat-react-rho-flax.vercel.app/",
+//     credentials: true,
+//   })
+// );
+
+const allowedOrigins = [
+  "https://chat-react-ashish-dholas-projects.vercel.app",
+  "https://chat-react-rho-flax.vercel.app"
+];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
