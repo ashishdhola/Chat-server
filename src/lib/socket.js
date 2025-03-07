@@ -1,7 +1,7 @@
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
-import jwt from "jsonwebtoken"; // Ensure you have jsonwebtoken installed (npm install jsonwebtoken)
+import jwt from "jsonwebtoken";
 
 const app = express();
 const server = http.createServer(app);
@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
       return socket.disconnect(true);
     }
 
-    const decoded = jwt.verify(token, "YOUR_SECRET_KEY"); // Replace with your secret key
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Replace with your secret key
     const userId = decoded.userId; // Extract userId from token payload
 
     console.log("User authenticated:", userId, socket.id);
